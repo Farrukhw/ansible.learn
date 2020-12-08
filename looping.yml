@@ -1,0 +1,27 @@
+#
+#  As there are multiple loops, Do read the documentation:
+#  https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html#loops
+---
+- hosts: all
+  become: yes
+  tasks: 
+
+# -- Looping through a list of applications to get install.
+    - name: install stuff 
+      apt: name={{ item }} update_cache=yes state=latest 
+      with_items: # with_items is a reserve word.
+        - vim 
+        - nano 
+        - apache2 
+# Note: if any item in the list is invalid or cause any failure, whole loop would exit. e.g. if file1.txt is missing...
+# -- Looping through a list of files to display their contents..
+    - name: Display File Contents 
+      debug: msg={{ item }}
+      with_file: # with_file is a reserve word.
+        - file1.txt 
+        - file2.txt 
+
+# -- Looping through a sequence..
+    - name: Display number sequence
+      debug: msg="This is Number {{ item }}"
+      with_sequence: start=1 end=10
