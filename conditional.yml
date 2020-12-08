@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+
+  tasks: 
+    - name: install apache2
+      apt: name=apache2 state=latest
+      when: ansible_os_family == "Debian" # only perform this task for Debian based system
+      register: results
+    
+    - name: install httpd
+      yum: name=httpd state=latest
+      when: ansible_os_family == "RedHat" # only perform this task for RedHat based system
+      register: results
+
+    - name: failed check
+      debug: msg="Some failure occured"
+      when: results is failed    # this tasks would only execute if 'results' contain 'failed'
+     
