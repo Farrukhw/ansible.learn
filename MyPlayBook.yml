@@ -1,0 +1,22 @@
+- hosts: ubntu  
+  become: yes
+  tasks: 
+    # - name: do a uname
+    #   shell: uname -a > ~/results.txt
+    # - name: whomai
+    #   shell : whoami >> ~/results.txt
+    
+    - name: install vsftpd on myUbntu
+      apt: name=vsftpd update_cache=yes state=latest
+      ignore_errors: yes
+      notify: start vsftpd
+
+    # - name: install vsftpd on mysql_db (deb)
+    #   yum: name=vsftpd update_cache=yes state=latest  # using yum on a debian and we know it will fail
+    #   ignore_errors: yes
+    #   notify: start vsftpd
+
+  handlers:  # Note the text of 'notify:' and Handler 'name:'. 
+    - name:     start vsftpd
+      service:  name=vsftpd enabled=yes state=started # service is the Module. 
+

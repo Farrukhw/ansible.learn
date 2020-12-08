@@ -1,0 +1,12 @@
+version: '3'
+services: 
+  ubntu.1: 
+    image: farrukhw/ubntu:latest 
+    hostname: ubntu.1
+    ports: 
+      - "2224:22" 
+  ubntu.2: 
+    image: farrukhw/ubntu:latest
+    hostname: ubntu.2 
+    ports: 
+      - "2225:22"
