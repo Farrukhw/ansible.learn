@@ -29,10 +29,11 @@ pipeline {
                         git checkout main
                         git pull -f -p
                         git status
-                        git config --global user.email "farrukh1@gmail.com"
-                        git config --global user.name "farrukh"
-                        echo 'modifying... file 1' >> .\\file1.txt
+                        git config --local user.email "farrukh1@gmail.com"
+                        git config --local user.name "farrukh"
+                        echo 'modifying... file 1' >> .\\file1.txt                        
                         git status
+                        git add .\\file1.txt
                         git commit -m "modifying file1" .\\file1.txt
                         git push
                        '''                    
