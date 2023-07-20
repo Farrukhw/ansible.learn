@@ -29,6 +29,10 @@ pipeline {
                         git checkout main
                         git pull -f -p
                         git status
+                        echo 'modifying... file 1' >> .\\file1.txt
+                        git status
+                        git commit -m "modifying file1" .\\file1.txt
+                        git push
                        '''                    
                     }
                 }
