@@ -25,17 +25,14 @@ pipeline {
                    withCredentials([sshUserPrivateKey(credentialsId: '913e5d57-48cc-4309-90aa-0854ed98de32', keyFileVariable: 'sshKeyFile')]) {
      
                        bat '''
-                        git status
-                        git checkout main
-                        git pull -f -p origin main
-                        git reset --hard HEAD
-                        git status
                         git config --local user.email "farrukh1@gmail.com"
                         git config --local user.name "farrukh"
+                        git checkout main
+                        git pull -f -p origin main
                         echo "modifying... file 1" > file1.txt                        
                         git status
                         
-                        git commit file1.txt -m "modifying file1" 
+                        git commit -a -m "modifying file1" 
                         git push origin main
                        '''                    
                     }
