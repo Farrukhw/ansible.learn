@@ -27,16 +27,16 @@ pipeline {
                        bat '''
                         git status
                         git checkout main
-                        git pull -f -p
-                        git fetch -f
+                        git pull -f -p origin main
+                        git reset --hard HEAD
                         git status
                         git config --local user.email "farrukh1@gmail.com"
                         git config --local user.name "farrukh"
                         echo "modifying... file 1" > file1.txt                        
                         git status
-                        git add file1.txt
-                        git commit -m "modifying file1" file1.txt
-                        git push
+                        
+                        git commit file1.txt -m "modifying file1" 
+                        git push origin main
                        '''                    
                     }
                 }
