@@ -22,6 +22,9 @@ pipeline {
                 dir ("$WORKSPACE") {
                    bat 'dir'
                    echo 'We are in ' + pwd()
+                   git status
+                    git checkout main
+                    git status
                 }
                 
             }
