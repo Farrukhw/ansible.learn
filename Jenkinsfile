@@ -25,6 +25,7 @@ pipeline {
                    bat '''
                     git status
                     git checkout main
+                    git pull
                     git status
                    '''
                 }
