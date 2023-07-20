@@ -27,7 +27,7 @@ pipeline {
                        bat '''
                         git status
                         git checkout main
-                        git pull -f -p
+                        git pull -f -p origin main
                         git reset --hard HEAD
                         git status
                         git config --local user.email "farrukh1@gmail.com"
@@ -35,8 +35,8 @@ pipeline {
                         echo "modifying... file 1" > file1.txt                        
                         git status
                         
-                        git commit -a -m "modifying file1" 
-                        git push
+                        git commit file1.txt -m "modifying file1" 
+                        git push origin main
                        '''                    
                     }
                 }
