@@ -21,7 +21,7 @@ pipeline {
                 echo 'Testing..'
                 dir ("$WORKSPACE") {
                     sh('ls')
-                    bat('dir')
+                    //bat('dir')
                 }
                 
             }
