@@ -26,12 +26,13 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'GitHub_User_Token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GITUSER')]) {
          
                        bat '''
+                        git switch main
                         git checkout main
-                        git pull -f -p https://$GITUSER:$GIT_TOKEN@github.com/Farrukhw/ansible.learn.git origin main 
+                        git pull -f -p 
                         echo \"modifying... file\" >> file1.txt                        
                         git add .
                         git commit -a -m "modifying file1" 
-                        git push https://$GITUSER:$GIT_TOKEN@github.com/Farrukhw/ansible.learn.git
+                        git push 
                        '''                    
                     }
                 }
