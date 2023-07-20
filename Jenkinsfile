@@ -32,7 +32,7 @@ pipeline {
                         echo \"modifying... file\" >> file1.txt                        
                         git add .
                         git commit -a -m "modifying file1" 
-                        git push https://$GITUSER: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@github.com/Farrukhw/ansible.learn.git
+                        git push https://${GITUSER}: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@github.com/Farrukhw/ansible.learn.git
                        '''                    
                     }
                 }
