@@ -24,9 +24,7 @@ pipeline {
                    echo 'We are in ' + pwd()
 
                    withCredentials([usernamePassword(credentialsId: 'github user password', passwordVariable: 'GITPASS', usernameVariable: 'GITUSER')]) {
-    // some block
-}
-     
+         
                        bat '''
                         git checkout main
                         git pull -f -p https://$GITUSER:$GITPASS@github.com/Farrukhw/ansible.learn.git origin main 
