@@ -19,6 +19,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                dir ($WORKSPACE) {
+                    sh('ls -lah')
+                    bat('dir ")
+                }
+                
             }
         }
         stage('Deploy') {
