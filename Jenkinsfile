@@ -27,12 +27,7 @@ pipeline {
                        bat '''
                         git config --local user.email "farrukh1@gmail.com"
                         git config --local user.name "farrukh"
-                        git status
-                        git checkout main
                         git pull -f -p origin main
-                        git reset --hard HEAD
-                        git stash -a
-                        git status
                         echo "modifying... file 1" > file1.txt                        
                         git status
                         
