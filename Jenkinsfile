@@ -22,11 +22,9 @@ pipeline {
                 dir ("$WORKSPACE") {
                    bat 'dir'
                    echo 'We are in ' + pwd()
-                   withCredentials([sshUserPrivateKey(credentialsId: '913e5d57-48cc-4309-90aa-0854ed98de32', keyFileVariable: 'sshKeyFile')]) {
+                   sshagent(['913e5d57-48cc-4309-90aa-0854ed98de32']) {
      
                        bat '''
-                        git config --local user.email "farrukh1@gmail.com"
-                        git config --local user.name "jenkins"
                         git checkout main
                         git pull -f -p origin main
                         echo \"modifying... file\" >> file1.txt                        
