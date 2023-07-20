@@ -22,12 +22,15 @@ pipeline {
                 dir ("$WORKSPACE") {
                    bat 'dir'
                    echo 'We are in ' + pwd()
-                   bat '''
-                    git status
-                    git checkout main
-                    git pull -f -p
-                    git status
-                   '''
+                   withCredentials([sshUserPrivateKey(credentialsId: '913e5d57-48cc-4309-90aa-0854ed98de32', keyFileVariable: '')]) {
+     
+                       bat '''
+                        git status
+                        git checkout main
+                        git pull -f -p
+                        git status
+                       '''                    
+                    }
                 }
                 
             }
