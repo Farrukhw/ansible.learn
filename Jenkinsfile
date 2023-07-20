@@ -20,8 +20,9 @@ pipeline {
             steps {
                 echo 'Testing..'
                 dir ("$WORKSPACE") {
-                    sh('ls')
+                    //sh('ls')
                     //bat('dir')
+                    echo 'We are in ' + pwd()
                 }
                 
             }
