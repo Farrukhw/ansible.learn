@@ -27,11 +27,12 @@ pipeline {
                        bat '''
                         git config --local user.email "farrukh1@gmail.com"
                         git config --local user.name "farrukh"
+                        git checkout main
                         git pull -f -p origin main
                         echo "modifying... file 1" > file1.txt                        
                         git status
                         
-                        git commit file1.txt -m "modifying file1" 
+                        git commit -a -m "modifying file1" 
                         git push origin main
                        '''                    
                     }
