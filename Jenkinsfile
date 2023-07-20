@@ -22,15 +22,18 @@ pipeline {
                 dir ("$WORKSPACE") {
                    bat 'dir'
                    echo 'We are in ' + pwd()
-                   sshagent(['913e5d57-48cc-4309-90aa-0854ed98de32']) {
+
+                   withCredentials([usernamePassword(credentialsId: 'github user password', passwordVariable: 'GITPASS', usernameVariable: 'GITUSER')]) {
+    // some block
+}
      
                        bat '''
                         git checkout main
-                        git pull -f -p origin main
+                        git pull -f -p https://$GITUSER:$GITPASS@github.com/Farrukhw/ansible.learn.git origin main 
                         echo \"modifying... file\" >> file1.txt                        
                         git add .
                         git commit -a -m "modifying file1" 
-                        git push origin main
+                        git push https://$GITUSER:$GITPASS@github.com/Farrukhw/ansible.learn.git
                        '''                    
                     }
                 }
