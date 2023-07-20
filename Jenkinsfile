@@ -22,17 +22,16 @@ pipeline {
                 dir ("$WORKSPACE") {
                    bat 'dir'
                    echo 'We are in ' + pwd()
-                   withCredentials([sshUserPrivateKey(credentialsId: '913e5d57-48cc-4309-90aa-0854ed98de32', keyFileVariable: 'sshKeyFile')]) {
-     
+
+                   withCredentials([usernamePassword(credentialsId: 'GitHub_User_Token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GITUSER')]) {
+         
                        bat '''
-                        git config --local user.email "farrukh1@gmail.com"
-                        git config --local user.name "jenkins"
                         git checkout main
-                        git pull -f -p origin main
+                        git pull -f -p https://$GITUSER:$GIT_TOKEN@github.com/Farrukhw/ansible.learn.git origin main 
                         echo \"modifying... file\" >> file1.txt                        
                         git add .
                         git commit -a -m "modifying file1" 
-                        git push origin main
+                        git push https://$GITUSER:$GIT_TOKEN@github.com/Farrukhw/ansible.learn.git
                        '''                    
                     }
                 }
