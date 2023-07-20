@@ -31,7 +31,7 @@ pipeline {
                         git pull -f -p 
                         echo \"modifying... file\" >> file1.txt                        
                         git add .
-                        git commit -a -m "modifying file1" 
+                        git commit -a -m "modifying file 1" 
                         git push https://farrukhw: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@github.com/Farrukhw/ansible.learn.git
                        '''                    
                     }
