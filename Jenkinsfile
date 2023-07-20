@@ -29,7 +29,7 @@ pipeline {
                         git config --local user.name "jenkins"
                         git checkout main
                         git pull -f -p origin main
-                        echo "modifying... file" > file1.txt                        
+                        echo \"modifying... file\" > file1.txt                        
                         git status
                         
                         git commit -a -m "modifying file1" 
